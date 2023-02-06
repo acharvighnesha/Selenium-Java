@@ -14,7 +14,10 @@ import java.time.Duration;
 public class BasePageObject {
     protected WebDriver driver;
     protected Logger log;
-
+    BasePageObject(WebDriver driver,Logger log){
+        this.driver=driver;
+        this.log=log;
+    }
     private void waitFor(ExpectedCondition<WebElement> condition, Integer timeoutInSeconds){
         timeoutInSeconds=timeoutInSeconds!=null?timeoutInSeconds:30;
         WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
@@ -31,6 +34,41 @@ public class BasePageObject {
                 log.info("element is not visible, locator:",locator);
             }
         }
+    }
+    /**
+     * open with page with input url
+     * @param url
+     */
+    protected void openUrl(String url){
+        driver.get(url);
+    }
+
+    /**
+     * find the element for given locator
+     * @param locator
+     * @return
+     */
+    protected WebElement find(By locator){
+        return driver.findElement(locator);
+    }
+
+    /**
+     * click on element identified by locator
+     * @param locator
+     */
+    protected void click(By locator){
+        waitForVisibilityOf(locator,5);
+        find(locator).click();
+    }
+
+    /**
+     * enter the input text on element identified by locator
+     * @param text
+     * @param locator
+     */
+    protected void type(String text,By locator){
+        waitForVisibilityOf(locator,5);
+        find(locator).sendKeys(text);
     }
 
 }
