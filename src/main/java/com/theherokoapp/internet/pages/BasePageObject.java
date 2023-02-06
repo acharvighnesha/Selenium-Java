@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.logging.log4j.Logger;
 
 import java.time.Duration;
+import java.util.List;
 
 public class BasePageObject {
     protected WebDriver driver;
@@ -50,6 +51,15 @@ public class BasePageObject {
      */
     protected WebElement find(By locator){
         return driver.findElement(locator);
+    }
+
+    /**
+     * Find all elements using given locator
+     * @param locator
+     * @return
+     */
+    protected List<WebElement> findAll(By locator) {
+        return driver.findElements(locator);
     }
 
     /**

@@ -11,7 +11,7 @@ public class WelcomePage extends BasePageObject{
         super(driver, log);
     }
 
-    public void opeanPage(){
+    public void openPage(){
         log.info("opening page:"+pageUrl);
         openUrl(pageUrl);
         log.info("Page opened!");

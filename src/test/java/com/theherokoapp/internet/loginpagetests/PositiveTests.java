@@ -1,4 +1,4 @@
-package com.theherokoapp.internet;
+package com.theherokoapp.internet.loginpagetests;
 
 import com.theherokoapp.internet.base.TestUtilities;
 import com.theherokoapp.internet.pages.LoginPage;
@@ -12,7 +12,7 @@ public class PositiveTests extends TestUtilities {
     public void logInTest() {
         System.out.println("Starting logIn test");
         WelcomePage welcomePage=new WelcomePage(driver,log);
-        welcomePage.opeanPage();
+        welcomePage.openPage();
         LoginPage loginPage = welcomePage.clickFormAuthenticationLink();
         SecureAreaPage secureAreaPage = loginPage.login("tomsmith", "SuperSecretPassword!");
         String expectedSuccessMessage = "You logged into a secure area!";
