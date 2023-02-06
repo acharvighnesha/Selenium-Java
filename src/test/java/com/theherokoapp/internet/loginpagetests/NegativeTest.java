@@ -1,6 +1,5 @@
-package com.theherokoapp.internet;
+package com.theherokoapp.internet.loginpagetests;
 
-import com.theherokoapp.internet.base.BaseTest;
 import com.theherokoapp.internet.base.TestUtilities;
 import com.theherokoapp.internet.pages.LoginPage;
 import com.theherokoapp.internet.pages.WelcomePage;
@@ -10,12 +9,12 @@ import org.testng.annotations.Test;
 
 public class NegativeTest extends TestUtilities {
 
-    @Parameters({"userName","password","expectedErrorMessage"})
+    @Parameters({"username","password","expectedErrorMessage"})
     @Test
     public void negativeLoginTest(String username, String password, String expectedErrorMessage){
         log.info("started the test");
         WelcomePage welcomePage=new WelcomePage(driver,log);
-        welcomePage.opeanPage();
+        welcomePage.openPage();
         LoginPage loginPage = welcomePage.clickFormAuthenticationLink();
         loginPage.login(username,password);
         loginPage.waitForErrorMessage();

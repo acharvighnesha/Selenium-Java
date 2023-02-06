@@ -1,15 +1,13 @@
 package com.theherokoapp.internet.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.logging.log4j.Logger;
 
 import java.time.Duration;
+import java.util.List;
 
 public class BasePageObject {
     protected WebDriver driver;
@@ -53,6 +51,15 @@ public class BasePageObject {
     }
 
     /**
+     * Find all elements using given locator
+     * @param locator
+     * @return
+     */
+    protected List<WebElement> findAll(By locator) {
+        return driver.findElements(locator);
+    }
+
+    /**
      * click on element identified by locator
      * @param locator
      */
@@ -69,6 +76,16 @@ public class BasePageObject {
     protected void type(String text,By locator){
         waitForVisibilityOf(locator,5);
         find(locator).sendKeys(text);
+    }
+
+    /**
+     * Wait for alert present and then switch to it
+     * @return
+     */
+    protected Alert switchToAlert(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.alertIsPresent());
+        return driver.switchTo().alert();
     }
 
 }

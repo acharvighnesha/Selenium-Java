@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="AlertsTestSuite">
+    <test name="Alert Tests" verbose="1" parallel="tests" thread-count="4">
+        <classes>
+            <class name="com.theherokoapp.internet.alerttests.AlertsTests"></class>
+        </classes>
+    </test>
+</suite>
