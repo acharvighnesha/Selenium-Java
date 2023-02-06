@@ -1,11 +1,11 @@
-package com.theherokoapp.internet.checkboxtests.com.theherokoapp.internet.loginpagetests;
-
+package com.theherokoapp.internet.checkboxtests;
 import com.theherokoapp.internet.base.TestUtilities;
+import com.theherokoapp.internet.pages.CheckboxesPage;
 import com.theherokoapp.internet.pages.WelcomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CheckboxesTests extends TestUtilities {
+public class CheckboxesTest extends TestUtilities {
 
     @Test
     public void selectingTwoCheckboxesTest() {

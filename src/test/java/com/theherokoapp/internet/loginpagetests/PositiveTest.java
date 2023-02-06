@@ -7,7 +7,7 @@ import com.theherokoapp.internet.pages.WelcomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class PositiveTests extends TestUtilities {
+public class PositiveTest extends TestUtilities {
     @Test
     public void logInTest() {
         System.out.println("Starting logIn test");
