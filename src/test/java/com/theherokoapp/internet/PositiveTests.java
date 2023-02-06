@@ -1,23 +1,28 @@
-package com.mycomp.beginning;
+package com.theherokoapp.internet;
 
-import com.theherokoapp.internet.base.BaseTest;
 import com.theherokoapp.internet.base.TestUtilities;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.theherokoapp.internet.pages.LoginPage;
+import com.theherokoapp.internet.pages.SecureAreaPage;
+import com.theherokoapp.internet.pages.WelcomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 public class PositiveTests extends TestUtilities {
     @Test
     public void logInTest() {
         System.out.println("Starting logIn test");
+        WelcomePage welcomePage=new WelcomePage(driver,log);
+        welcomePage.opeanPage();
+        LoginPage loginPage = welcomePage.clickFormAuthenticationLink();
+        SecureAreaPage secureAreaPage = loginPage.login("tomsmith", "SuperSecretPassword!");
+        String expectedSuccessMessage = "You logged into a secure area!";
+        // write the assertion
+        Assert.assertTrue(secureAreaPage.isLogOutButtonVisible());
+        Assert.assertTrue(secureAreaPage.getSuccessMessageText().contains(expectedSuccessMessage),
+                "actualSuccessMessage does not contain expectedSuccessMessage\nexpectedSuccessMessage: "
+                        + expectedSuccessMessage + "\nactualSuccessMessage: " + secureAreaPage.getSuccessMessageText());
 
-        // Create driver
-
+        /* commented the basic implementation
 
         // open main page
         String url = "http://the-internet.herokuapp.com/";
@@ -48,10 +53,11 @@ public class PositiveTests extends TestUtilities {
                 "logOutButton is not visible.");
 
         // Successful log in message
-        String expectedSuccessMessage = "You logged into a secure area!";
+
         String actualSuccessMessage = driver.findElement(By.id("flash")).getText();
         Assert.assertTrue(actualSuccessMessage.contains(expectedSuccessMessage),
                 "actualSuccessMessage does not contain expectedSuccessMessage\nexpectedSuccessMessage: "
-                        + expectedSuccessMessage + "\nactualSuccessMessage: " + actualSuccessMessage);
+                        + expectedSuccessMessage + "\nactualSuccessMessage: " + actualSuccessMessage);*/
+
     }
 }

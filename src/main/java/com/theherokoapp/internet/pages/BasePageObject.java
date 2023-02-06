@@ -14,7 +14,7 @@ import java.time.Duration;
 public class BasePageObject {
     protected WebDriver driver;
     protected Logger log;
-    BasePageObject(WebDriver driver,Logger log){
+    public BasePageObject(WebDriver driver,Logger log){
         this.driver=driver;
         this.log=log;
     }
