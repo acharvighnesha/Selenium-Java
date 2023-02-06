@@ -9,7 +9,7 @@ public class LoginPage extends BasePageObject {
     private By passwordLocator=By.id("password");
     private By logInButtonLocator = By.tagName("button");
 
-    LoginPage(WebDriver driver, Logger log) {
+    public LoginPage(WebDriver driver, Logger log) {
         super(driver, log);
     }
 
