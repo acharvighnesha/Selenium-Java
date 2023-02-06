@@ -8,6 +8,7 @@ public class LoginPage extends BasePageObject {
     private By usernNameLocator=By.id("username");
     private By passwordLocator=By.id("password");
     private By logInButtonLocator = By.tagName("button");
+    private By errorMessageLocator = By.id("flash");
 
     public LoginPage(WebDriver driver, Logger log) {
         super(driver, log);
@@ -25,6 +26,21 @@ public class LoginPage extends BasePageObject {
         type(password,passwordLocator);
         click(logInButtonLocator);
         return new SecureAreaPage(driver,log);
+    }
+
+    /**
+     * Wait for error message to be visible on the page
+     */
+    public void waitForErrorMessage() {
+        waitForVisibilityOf(errorMessageLocator, 5);
+    }
+
+    /**
+     * getErrorMessage displayed
+     * @return
+     */
+    public String getErrorMessageText() {
+        return find(errorMessageLocator).getText();
     }
 
 }

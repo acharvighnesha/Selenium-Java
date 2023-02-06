@@ -1,18 +1,11 @@
 package com.theherokoapp.internet;
 
-import com.theherokoapp.internet.base.BaseTest;
 import com.theherokoapp.internet.base.TestUtilities;
 import com.theherokoapp.internet.pages.LoginPage;
 import com.theherokoapp.internet.pages.SecureAreaPage;
 import com.theherokoapp.internet.pages.WelcomePage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.time.Duration;
 
 public class PositiveTests extends TestUtilities {
     @Test
@@ -28,6 +21,7 @@ public class PositiveTests extends TestUtilities {
         Assert.assertTrue(secureAreaPage.getSuccessMessageText().contains(expectedSuccessMessage),
                 "actualSuccessMessage does not contain expectedSuccessMessage\nexpectedSuccessMessage: "
                         + expectedSuccessMessage + "\nactualSuccessMessage: " + secureAreaPage.getSuccessMessageText());
+
         /* commented the basic implementation
 
         // open main page
